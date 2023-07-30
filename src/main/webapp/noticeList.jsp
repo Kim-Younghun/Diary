@@ -32,7 +32,7 @@
 		//스태틱 메서드, 드라이브 로딩, 메모리에 올린다, 변수에 저장할 필요없음.
 		Class.forName("org.mariadb.jdbc.Driver");
 		// 마리아db 접속을 유지해야 함 
-		Connection conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/diary", "root", "java1234");
+		Connection conn = DriverManager.getConnection("jdbc:mariadb://52.78.47.161:3306/diary", "root", "java1234");
 		// 문자열로 sql문을 받아서 sql로 적용
 		// AS 사용하여 DB컬럼명과 자바 변수명과 일치시킨다.
 		PreparedStatement stmt = conn.prepareStatement(

@@ -78,7 +78,7 @@
 	
 	//5. mariadb에 RDBMS에 update문을 전송한다.
 	Class.forName("org.mariadb.jdbc.Driver");
-	Connection conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/diary", "root", "java1234");
+	Connection conn = DriverManager.getConnection("jdbc:mariadb://52.78.47.161:3306/diary", "root", "java1234");
 	String sql = "UPDATE schedule SET schedule_date=?, schedule_time=?, schedule_memo=?, schedule_color=?, updatedate=now() WHERE schedule_no=? AND schedule_pw=?";
 	PreparedStatement stmt = conn.prepareStatement(sql);
 	// ?에 입력될 값 적용

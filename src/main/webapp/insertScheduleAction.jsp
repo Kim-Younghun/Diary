@@ -34,7 +34,7 @@
 	//스태틱 메서드, 드라이브 로딩, 메모리에 올린다, 변수에 저장할 필요없음.
 	Class.forName("org.mariadb.jdbc.Driver");
 	// 마리아db 접속을 유지해야 함 
-	Connection conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/diary", "root", "java1234");
+	Connection conn = DriverManager.getConnection("jdbc:mariadb://52.78.47.161:3306/diary", "root", "java1234");
 	// 문자열로 sql문을 받아서 sql로 적용
 	String sql = "INSERT INTO schedule(schedule_date, schedule_time, schedule_memo, schedule_color, createdate, updatedate) values(?,?,?,?,now(),now())";
 	PreparedStatement stmt = conn.prepareStatement(sql);
@@ -55,7 +55,7 @@
 	
 	if(row == 1) {
 		// 상세 페이지로 리디렉션(y, m, d 값 같이 보냄)
-		response.sendRedirect("./scheduleListByDate.jsp?y="+y+"&m="+m+"&d"+d); 
+		response.sendRedirect("./scheduleListByDate.jsp?y="+y+"&m="+m+"&d="+d); 
 		System.out.println("입력 성공");
 	} else if(row == 0) {
 		System.out.println("입력 실패");

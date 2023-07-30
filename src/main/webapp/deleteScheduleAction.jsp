@@ -23,7 +23,7 @@
 	
 	// DB접속
 	Class.forName("org.mariadb.jdbc.Driver");
-	Connection conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/diary", "root", "java1234");
+	Connection conn = DriverManager.getConnection("jdbc:mariadb://52.78.47.161:3306/diary", "root", "java1234");
 	// DB접속 디버깅
 	System.out.println("deleteScheduleAction.jsp 접속성공");
 	

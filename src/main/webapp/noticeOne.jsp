@@ -12,7 +12,7 @@
 		int noticeNo = Integer.parseInt(request.getParameter("noticeNo"));
 		// DB접속
 		Class.forName("org.mariadb.jdbc.Driver");
-		Connection conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/diary", "root", "java1234");
+		Connection conn = DriverManager.getConnection("jdbc:mariadb://52.78.47.161:3306/diary", "root", "java1234");
 		// notice_no에 해당하는 행을 SELECT하는 SQL문
 		String sql = "SELECT notice_no noticeNo, notice_title noticeTitle, notice_content noticeContent, notice_writer noticeWriter, createdate, updatedate FROM notice WHERE notice_no = ?";
 		PreparedStatement stmt = conn.prepareStatement(sql);

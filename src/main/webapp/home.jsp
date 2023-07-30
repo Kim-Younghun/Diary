@@ -24,7 +24,7 @@
 			//스태틱 메서드, 드라이브 로딩, 메모리에 올린다, 변수에 저장할 필요없음.
 			Class.forName("org.mariadb.jdbc.Driver");
 			// 마리아db 접속을 유지해야 함 
-			Connection conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/diary", "root", "java1234");
+			Connection conn = DriverManager.getConnection("jdbc:mariadb://52.78.47.161:3306/diary", "root", "java1234");
 			String sql1 = "SELECT notice_no noticeNo, notice_title noticeTitle, createdate FROM notice ORDER BY createdate DESC LIMIT 0, 5";
 			PreparedStatement stmt1 = conn.prepareStatement(sql1);
 			System.out.println(stmt1 + "<-- stmt1");
@@ -124,7 +124,7 @@
 			</tr>
 			<tr>
 				<td>
-					JDK 17(Calendar API 사용), HTML, CSS, SQL, Maria DB, Eclipse, Bootstrap, JSP, JDBC, JSTL
+					JDK 17(Calendar API 사용), HTML, CSS, HeidiSQL, Maria DB(10.5), Eclipse(22-12), Bootstrap5, JSP, JDBC
 				</td>
 			</tr>
 			<tr>

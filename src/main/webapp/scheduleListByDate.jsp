@@ -46,7 +46,7 @@
 	
 	// 일별 스케쥴 리스트
 	Class.forName("org.mariadb.jdbc.Driver");
-	Connection conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/diary", "root", "java1234");
+	Connection conn = DriverManager.getConnection("jdbc:mariadb://52.78.47.161:3306/diary", "root", "java1234");
 	// 일정날짜를 일정시간의 오름차순으로 SELECT
 	String sql = "SELECT schedule_no scheduleNo, schedule_date scheduleDate, schedule_time scheduleTime, schedule_color scheduleColor, schedule_memo scheduleMemo, createdate, updatedate, schedule_pw schedulePw FROM schedule WHERE schedule_date = ? ORDER BY schedule_time ASC";
 	PreparedStatement stmt = conn.prepareStatement(sql);

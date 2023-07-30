@@ -22,7 +22,7 @@
 	//스태틱 메서드
 	Class.forName("org.mariadb.jdbc.Driver");
 	// 마리아db 접속을 유지해야 함.
-	Connection conn = DriverManager.getConnection("jdbc:mariadb://127.0.0.1:3306/diary", "root", "java1234");
+	Connection conn = DriverManager.getConnection("jdbc:mariadb://52.78.47.161:3306/diary", "root", "java1234");
 	// 번호와 비밀번호가 일치하는 경우에 삭제하는 sql
 	String sql = "DELETE FROM notice WHERE notice_no=? AND notice_pw=?";
 	PreparedStatement stmt = conn.prepareStatement(sql);
