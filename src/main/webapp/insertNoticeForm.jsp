@@ -1,60 +1,194 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
+<!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>insertNoticeForm</title>
-<!-- Latest compiled and minified CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- Latest compiled JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="./resources/assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="./resources/assets/img/favicon.png">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>insertNoticeForm</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="./resources/assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="./resources/assets/css/animate.min.css" rel="stylesheet"/>
+
+    <!--  Paper Dashboard core CSS    -->
+    <link href="./resources/assets/css/paper-dashboard.css" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="./resources/assets/css/demo.css" rel="stylesheet" />
+
+
+    <!--  Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href="./resources/assets/css/themify-icons.css" rel="stylesheet">
+
 </head>
 <body>
-	<div class="container"><!-- 메인메뉴 -->
-		<a href="./home.jsp">홈으로</a>
-		<a href="./noticeList.jsp">공지리스트</a>
-		<a href="./diaryList.jsp">일정리스트</a>
-	
-	<h1 class="text-bg-info">
-		<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-calendar" viewBox="0 0 16 16">
-		  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
-		</svg>&nbsp;공지 입력
-	</h1>
-	<!-- 폼 데이터 정보 -->
-	<form action="./insertNoticeAction.jsp" method="post">
-		<table class="table table-striped">
-			<tr>
-				<td>일정제목</td>
-				<td>
-					<input type="text" name="noticeTitle">
-				</td>
-			</tr>
-			<tr>
-				<td>일정내용</td>
-				<td>
-					<textarea rows="5" cols="80" name="noticeContent"></textarea>
-				</td>
-			</tr>
-			<tr>
-				<td>작성자</td>
-				<td>
-					<input type="text" name="noticeWriter">
-				</td>
-			</tr>
-			<tr>
-				<td>비밀번호</td>
-				<td>
-					<input type="text" name="noticePw">
-				</td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<button type="submit" class="btn btn-success">등록</button>
-				</td>
-			</tr>
-		</table>
-	</form>
-	</div>
+
+
+<div class="wrapper">
+    <div class="sidebar" data-background-color="white" data-active-color="danger">
+
+    <!--
+		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+	-->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="https://github.com/Kim-Younghun/Diary" class="simple-text">
+                    Dairy Project
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li>
+                    <a href="./home.jsp">
+                        <i class="ti-home"></i>
+                        <p>home</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="./noticeList.jsp">
+                        <i class="ti-bell"></i>
+                        <p>noticeList</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="./scheduleList.jsp">
+                        <i class="ti-view-list-alt"></i>
+                        <p>scheduleList</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                   	<table class="table">
+                   		<tr>
+							<td>
+								개발 환경 및 라이브러리
+							</td>
+						</tr>
+						<tr>
+							<td>
+								JDK 17(Calendar API 사용), HTML, CSS, HeidiSQL, Maria DB(10.5), Eclipse(22-12), Bootstrap5, JSP, JDBC
+							</td>
+						</tr>
+						<tr>
+							<td>
+							[구현기능] <br> 1. 공지사항 및 스케쥴 UPDATE, DELETE, INSERT 기능 <br> 2. 달력에 일정내용 출력 <br> 3. 공지사항 목록 페이징 기능 
+							</td>
+						</tr>
+                   	</table>
+                </div>
+            </div>
+        </nav>
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+					<div class="col-md-8 col-md-offset-2">
+                        <div class="card">
+                            <div class="header text-center">
+                                <h3 class="title">공지입력</h3>
+								<br>
+                            </div>
+                            <div class="content table-responsive table-full-width table-upgrade">
+                            	<form action="./insertNoticeAction.jsp" method="post">
+	                                <table class="table">
+	                                  	<tr>
+											<td>일정제목</td>
+											<td>
+												<input type="text" name="noticeTitle">
+											</td>
+										</tr>
+										<tr>
+											<td>일정내용</td>
+											<td>
+												<textarea rows="5" cols="80" name="noticeContent"></textarea>
+											</td>
+										</tr>
+										<tr>
+											<td>작성자</td>
+											<td>
+												<input type="text" name="noticeWriter">
+											</td>
+										</tr>
+										<tr>
+											<td>비밀번호</td>
+											<td>
+												<input type="text" name="noticePw">
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2">
+												<button type="submit" class="btn btn-success">등록</button>
+											</td>
+										</tr>
+	                                </table>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="copyright pull-right">
+                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+
 </body>
+
+    <!--   Core JS Files   -->
+    <script src="./resources/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="./resources/assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+	<!--  Checkbox, Radio & Switch Plugins -->
+	<script src="./resources/assets/js/bootstrap-checkbox-radio.js"></script>
+
+	<!--  Charts Plugin -->
+	<script src="./resources/assets/js/chartist.min.js"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="./resources/assets/js/bootstrap-notify.js"></script>
+
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+    <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
+	<script src="./resources/assets/js/paper-dashboard.js"></script>
+
+	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+	<script src="./resources/assets/js/demo.js"></script>
 </html>

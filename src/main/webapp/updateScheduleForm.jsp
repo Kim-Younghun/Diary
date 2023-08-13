@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"  pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="java.util.*" %>
 <%@ page import="vo.*" %>
@@ -55,111 +55,251 @@
 		scheduleList.add(s);
 	}
 %>   
-<!DOCTYPE html>
+
+<!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>updateNoticeForm</title>
-<!-- Latest compiled and minified CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<!-- Latest compiled JavaScript -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+	<meta charset="utf-8" />
+	<link rel="apple-touch-icon" sizes="76x76" href="./resources/assets/img/apple-icon.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="./resources/assets/img/favicon.png">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+	<title>updateNoticeForm</title>
+
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="./resources/assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="./resources/assets/css/animate.min.css" rel="stylesheet"/>
+
+    <!--  Paper Dashboard core CSS    -->
+    <link href="./resources/assets/css/paper-dashboard.css" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="./resources/assets/css/demo.css" rel="stylesheet" />
+
+
+    <!--  Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Muli:400,300' rel='stylesheet' type='text/css'>
+    <link href="./resources/assets/css/themify-icons.css" rel="stylesheet">
+
 </head>
 <body>
-	<%
-		for(Schedule s : scheduleList) {
-	%>
-	<div class="container">
-		<h1 class="text-bg-info">
-			<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="currentColor" class="bi bi-book" viewBox="0 0 16 16">
-				  <path d="M1 2.828c.885-.37 2.154-.769 3.388-.893 1.33-.134 2.458.063 3.112.752v9.746c-.935-.53-2.12-.603-3.213-.493-1.18.12-2.37.461-3.287.811V2.828zm7.5-.141c.654-.689 1.782-.886 3.112-.752 1.234.124 2.503.523 3.388.893v9.923c-.918-.35-2.107-.692-3.287-.81-1.094-.111-2.278-.039-3.213.492V2.687zM8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783z"/>
-			</svg>&nbsp;일정수정
-		</h1>
-		<div class="text-danger">
-			<%
-				// 메세지의 값이 존재하는 경우 메세지 출력
-				if(request.getParameter("msg") != null) {
-			%>
-				<%=request.getParameter("msg")%>
-			<%	
-				}
-			%>
-		</div>
-		<!-- 액션페이지로 연동되도록,  -->
-		<form action="./updateScheduleAction.jsp" method="post">
-			<table class="table table-striped">
-				<tr>
-					<td>
-						번호
-					</td>
-					<td>
-						<input type="text" name="scheduleNo" value="<%=s.scheduleNo%>" readonly="readonly">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						일정날짜
-					</td>
-					<td>
-						<input type="date" name="scheduleDate" value="<%=s.scheduleDate%>">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						비밀번호
-					</td>
-					<td>
-						<input type="password" name="schedulePw">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						색상
-					</td>
-					<td>
-						<input type="color" name="scheduleColor" value="<%=s.scheduleColor%>">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						일정시간
-					</td>
-					<td>
-						<input type="time" name="scheduleTime" value="<%=s.scheduleTime%>">
-					</td>
-				</tr>
-				<tr>
-					<td>
-						일정내용
-					</td>
-					<td>
-						<textarea rows="5" cols="80" name="scheduleMemo"><%=s.scheduleMemo%></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						생성날짜
-					</td>
-					<td>
-						<%=s.createdate%>
-					</td>
-				</tr>
-				<tr>
-					<td>
-						수정날짜
-					</td>
-					<td>
-						<%=s.updatedate%>
-					</td>
-				</tr>
-			</table>
-			<div>
-				<button type="submit" class="btn btn-warning">수정</button>
-			</div>
-		</form>
-	</div>
-	<%
-		}
-	%>
+
+
+<div class="wrapper">
+    <div class="sidebar" data-background-color="white" data-active-color="danger">
+
+    <!--
+		Tip 1: you can change the color of the sidebar's background using: data-background-color="white | black"
+		Tip 2: you can change the color of the active button using the data-active-color="primary | info | success | warning | danger"
+	-->
+
+    	<div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="https://github.com/Kim-Younghun/Diary" class="simple-text">
+                    Dairy Project
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li>
+                    <a href="./home.jsp">
+                        <i class="ti-home"></i>
+                        <p>home</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="./noticeList.jsp">
+                        <i class="ti-bell"></i>
+                        <p>noticeList</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="./scheduleList.jsp">
+                        <i class="ti-view-list-alt"></i>
+                        <p>scheduleList</p>
+                    </a>
+                </li>
+            </ul>
+    	</div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar bar1"></span>
+                        <span class="icon-bar bar2"></span>
+                        <span class="icon-bar bar3"></span>
+                    </button>
+                   	<table class="table">
+                   		<tr>
+							<td>
+								개발 환경 및 라이브러리
+							</td>
+						</tr>
+						<tr>
+							<td>
+								JDK 17(Calendar API 사용), HTML, CSS, HeidiSQL, Maria DB(10.5), Eclipse(22-12), Bootstrap5, JSP, JDBC
+							</td>
+						</tr>
+						<tr>
+							<td>
+							[구현기능] <br> 1. 공지사항 및 스케쥴 UPDATE, DELETE, INSERT 기능 <br> 2. 달력에 일정내용 출력 <br> 3. 공지사항 목록 페이징 기능 
+							</td>
+						</tr>
+                   	</table>
+                </div>
+            </div>
+        </nav>
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+					<div class="col-md-8 col-md-offset-2">
+                        <div class="card">
+                            <div class="header text-center">
+                                <h3 class="title">일정수정</h3>
+								<br>
+                            </div>
+                            <div class="content table-responsive table-full-width table-upgrade">
+                            <%
+								for(Schedule s : scheduleList) {
+							%>
+							<div class="text-danger">
+								<%
+									// 메세지의 값이 존재하는 경우 메세지 출력
+									if(request.getParameter("msg") != null) {
+								%>
+									<%=request.getParameter("msg")%>
+								<%	
+									}
+								%>
+							</div>
+								<!-- 액션페이지로 연동되도록 함-->
+                            	<form action="./updateScheduleAction.jsp" method="post">
+	                                <table class="table">
+	                                  	<tr>
+											<td>
+												번호
+											</td>
+											<td>
+												<input type="text" name="scheduleNo" value="<%=s.scheduleNo%>" readonly="readonly">
+											</td>
+										</tr>
+										<tr>
+											<td>
+												일정날짜
+											</td>
+											<td>
+												<input type="date" name="scheduleDate" value="<%=s.scheduleDate%>">
+											</td>
+										</tr>
+										<tr>
+											<td>
+												비밀번호
+											</td>
+											<td>
+												<input type="password" name="schedulePw">
+											</td>
+										</tr>
+										<tr>
+											<td>
+												색상
+											</td>
+											<td>
+												<input type="color" name="scheduleColor" value="<%=s.scheduleColor%>">
+											</td>
+										</tr>
+										<tr>
+											<td>
+												일정시간
+											</td>
+											<td>
+												<input type="time" name="scheduleTime" value="<%=s.scheduleTime%>">
+											</td>
+										</tr>
+										<tr>
+											<td>
+												일정내용
+											</td>
+											<td>
+												<textarea rows="5" cols="80" name="scheduleMemo"><%=s.scheduleMemo%></textarea>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												생성날짜
+											</td>
+											<td>
+												<%=s.createdate%>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												수정날짜
+											</td>
+											<td>
+												<%=s.updatedate%>
+											</td>
+										</tr>
+	                                </table>
+	                                <div>
+										<button type="submit" class="btn btn-warning">수정</button>
+									</div>
+                                </form>
+                                <%
+									}
+								%>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <div class="copyright pull-right">
+                    &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+
 </body>
+
+    <!--   Core JS Files   -->
+    <script src="./resources/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+	<script src="./resources/assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+	<!--  Checkbox, Radio & Switch Plugins -->
+	<script src="./resources/assets/js/bootstrap-checkbox-radio.js"></script>
+
+	<!--  Charts Plugin -->
+	<script src="./resources/assets/js/chartist.min.js"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="./resources/assets/js/bootstrap-notify.js"></script>
+
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js"></script>
+
+    <!-- Paper Dashboard Core javascript and methods for Demo purpose -->
+	<script src="./resources/assets/js/paper-dashboard.js"></script>
+
+	<!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+	<script src="./resources/assets/js/demo.js"></script>
 </html>
